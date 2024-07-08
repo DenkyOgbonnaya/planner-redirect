@@ -9,15 +9,19 @@
             // Extract the authorization code from the URL
             const params = new URLSearchParams(window.location.search);
             const code = params.get('code');
-            const error = params.get('error');
+            const state = params.get('state');
+            const scope = params.get('scope');
+            const authUser = params.get('authUser');
+            const prompt = params.get('prompt');
 
             if (code) {
                 // Redirect to your app with the authorization code
-                window.location.href = `dev.planner://auth?code=${code}`;
-            } else if (error) {
-                // Handle the error case
-                window.location.href = `dev.planner://auth?error=${error}`;
-            }
+                window.location.href = `dev.planner://auth?state=${state}&code=${code}&scope=${scope}&authUser=${authUser}&prompt=${prompt}`;
+            } 
+            // else if (error) {
+            //     // Handle the error case
+            //     window.location.href = `dev.planner://auth?error=${error}`;
+            // }
         }
     </script>
 </head>
